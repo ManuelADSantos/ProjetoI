@@ -52,7 +52,7 @@ void loop() {
   //analogWrite(LED_R,map(Red,42,366,255,0)); 366, 42, 0, 255
 
 
-  red = map(frequencyR,42, 366, 255, 0);
+  red = map(frequencyR,1200, 800, 255, 0);
   Serial.print("R= ");
   Serial.print(red);
   Serial.print("  ");
@@ -68,7 +68,7 @@ void loop() {
 
   //analogWrite(LED_G,map(Green,62,359,0,255)); 359, 62, 0, 255
 
-  green = map(frequencyG,62, 359, 255, 0 );
+  green = map(frequencyG,1600, 1201, 255, 0 );
   Serial.print("G= ");
   Serial.print(green);
   Serial.print("  ");
@@ -82,7 +82,7 @@ void loop() {
   frequencyB = pulseIn(sensorOut, LOW);
 
   // analogWrite(LED_B,map(Blue,101,244,0,255)); 244, 101, 0, 255
-  blue = map(frequencyB,101, 244, 255, 0);
+  blue = map(frequencyB,2000, 1601, 255, 0);
 
   Serial.print("B= ");
   Serial.print(blue);
