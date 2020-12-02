@@ -4,7 +4,7 @@
    HIGH| LOW  | clear
    HIGH| HIGH | verde
 */
- 
+
 #define S0 4
 #define S1 5
 #define S2 6
@@ -20,17 +20,17 @@ int frequencyR = 0, frequencyG = 0 , frequencyB=0, red, green, blue;
 float total=0, cinco = 0, dez = 0, vinte = 0;
 
 void setup() {
-  
+
   pinMode(S0, OUTPUT);
   pinMode(S1, OUTPUT);
   pinMode(S2, OUTPUT);
   pinMode(S3, OUTPUT);
   pinMode(sensorOut, INPUT);
-  
+
   //Frequency-scaling a 20%
   digitalWrite(S0,HIGH);
   digitalWrite(S1,LOW);
-  
+
   Serial.begin(9600);
 
   //LED RGB para testes
@@ -40,35 +40,35 @@ void setup() {
 }
 
 void loop() {
-  
+
   //----------------------------------------------- VERMELHO -------------------------------------------------------------------------
-  
+
   digitalWrite(S2,LOW);
   digitalWrite(S3,LOW);
-  
+
   // Ler a frequência de saída - vermelho
   frequencyR = pulseIn(sensorOut, LOW);
-  
+
   //analogWrite(LED_R,map(Red,42,366,255,0)); 366, 42, 0, 255
-  
-  
-  red = map(frequencyR,366, 42, 0, 255);
+
+
+  red = map(frequencyR,42, 366, 255, 0);
   Serial.print("R= ");
   Serial.print(red);
   Serial.print("  ");
   delay(500);
 
   //----------------------------------------------------------VERDE------------------------------------------------------------------
-  
+
   digitalWrite(S2,HIGH);
   digitalWrite(S3,HIGH);
-  
+
   //  Ler a frequência de saída - verde
   frequencyG = pulseIn(sensorOut, LOW);
-  
+
   //analogWrite(LED_G,map(Green,62,359,0,255)); 359, 62, 0, 255
-  
-  green = map(frequencyG,359, 62, 0, 255 );  
+
+  green = map(frequencyG,62, 359, 255, 0 );
   Serial.print("G= ");
   Serial.print(green);
   Serial.print("  ");
@@ -77,13 +77,13 @@ void loop() {
   //------------------------------------------------------------AZUL---------------------------------------------------------------------
   digitalWrite(S2,LOW);
   digitalWrite(S3,HIGH);
-  
+
   // Ler a frequência de saída - azul
   frequencyB = pulseIn(sensorOut, LOW);
-  
+
   // analogWrite(LED_B,map(Blue,101,244,0,255)); 244, 101, 0, 255
-  blue = map(frequencyB,244, 101, 0, 255);
-  
+  blue = map(frequencyB,101, 244, 255, 0);
+
   Serial.print("B= ");
   Serial.print(blue);
   Serial.println("  ");
@@ -100,7 +100,7 @@ void loop() {
       digitalWrite(G, LOW);
       digitalWrite(B, LOW);
       cinco += 5.00;
-      
+
   }
   if(green > red && green > blue){
     Serial.println(" - VERDE detetado!");
@@ -115,7 +115,7 @@ void loop() {
     digitalWrite(R, LOW);
     digitalWrite(G, LOW);
     vinte += 20.00;
-    
+
   }
 
   /*digitalWrite(R, red);
